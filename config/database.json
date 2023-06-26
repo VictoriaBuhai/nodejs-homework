@@ -1,5 +1,22 @@
 {
   "users": [],
-  "fighters": [],
+  "fighters": [
+    {
+      "name": "Jon",
+      "power": 70,
+      "defense": 5,
+      "health": 100,
+      "id": "a17fd68e-7c77-4300-ab12-3f88450d5f8a",
+      "createdAt": "2023-06-26T12:23:17.332Z"
+    },
+    {
+      "name": "Kevin",
+      "power": 60,
+      "defense": 9,
+      "health": 100,
+      "id": "d13b3c97-73dd-4c9d-bbe7-3a71398fa9e7",
+      "createdAt": "2023-06-26T12:54:05.746Z"
+    }
+  ],
   "fights": []
 }

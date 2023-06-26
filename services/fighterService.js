@@ -1,9 +1,9 @@
-import { FighterRepository } from "../repositories/fighterRepository.js";
+import { fighterRepository } from "../repositories/fighterRepository.js";
 
 class FighterService {
   // TODO: Implement methods to work with fighters
   search(search) {
-    const item = FighterRepository.getOne(search);
+    const item = fighterRepository.getOne(search);
     if (!item) {
       return null;
     }
@@ -12,7 +12,7 @@ class FighterService {
 
   getAllFighters() {
     try {
-      const fighters = FighterRepository.getAll();
+      const fighters = fighterRepository.getAll();
       if (fighters) return fighters;
     } catch (error) {
       throw Error("Fighters not found");
@@ -21,7 +21,7 @@ class FighterService {
 
   getFighter(data) {
     try {
-      const fighter = FighterRepository.getOne(data);
+      const fighter = fighterRepository.getOne(data);
       if (fighter) return fighter;
     } catch (error) {
       throw Error("Fighters not found");
@@ -30,7 +30,7 @@ class FighterService {
 
   createFighter(fighterData) {
     try {
-      const fighter = FighterRepository.create(fighterData);
+      const fighter = fighterRepository.create(fighterData);
       if (fighter) return fighter;
     } catch (error) {
       throw Error("Fighters don't saved");
@@ -39,7 +39,7 @@ class FighterService {
 
   updateFighter(id, data) {
     try {
-      const fighter = FighterRepository.update(id, data);
+      const fighter = fighterRepository.update(id, data);
       if (fighter) return fighter;
     } catch (error) {
       throw Error("Something went wrog... Fighter don't update");
@@ -48,7 +48,7 @@ class FighterService {
 
   deleteFighter(id) {
     try {
-      const fighter = FighterRepository.delete(id);
+      const fighter = fighterRepository.delete(id);
       return fighter;
     } catch (error) {
       throw Error("Something went wrong... Fighter don't deleted");

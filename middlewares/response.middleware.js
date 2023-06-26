@@ -1,7 +1,8 @@
 const responseMiddleware = (req, res, next) => {
   if (res.err) {
+    console.log("res.err", res.err);
     const errorStatus = res.err.status;
-    res.status(errorStatus).send("Something went wrong");
+    res.send({ message: res.err.toString(), status: errorStatus });
   } else {
     res.status(200).send(res.data);
   }

@@ -1,5 +1,5 @@
 import { USER } from "../models/user.js";
-import { UserService } from "../services/userService";
+import { userService } from "../services/userService";
 
 const emailValidation = (email) => {
   const validation = /^\w+([\.-]?\w+)*@gmail.com/;
@@ -31,10 +31,10 @@ const validationCreateUser = (body) => {
   if (!body.hasOwnProperty("lastName") || body.lastName === "")
     return "Last name field is required and can't be empty";
 
-  if (UserService.search({ email: body.email }))
+  if (userService.search({ email: body.email }))
     return "User with this email is already exist. Try again";
 
-  if (UserService.search({ email: body.phoneNumber }))
+  if (userService.search({ email: body.phoneNumber }))
     return "User with this phone number is already exist. Try again";
 
   if (!emailValidation(body.email) || body.email === "")
@@ -49,7 +49,7 @@ const validationCreateUser = (body) => {
 
 const validationUpdateUser = (body) => {
   const fields = ["firstName", "lastName", "email", "phoneNumber", "password"];
-  if (!UserService.search({ email: body.email })) return "User doesn't exist";
+  if (!userService.search({ email: body.email })) return "User doesn't exist";
   if (Object.keys(body).length === 0)
     return "At least one field from the model must be present";
   if (!Object.keys(body).every((key) => fields.includes(key)))
@@ -57,20 +57,20 @@ const validationUpdateUser = (body) => {
 };
 
 const createUserValid = (req, res, next) => {
-  const errorMessage = validationCreateUser(req);
+  const errorMessage = validationCreateUser(req.body);
   if (errorMessage) {
-    res.error = errorMessage;
-    res.error.status = 400;
+    res.err = Error(errorMessage);
+    res.err.status = 400;
   }
   // TODO: Implement validatior for USER entity during creation
   next();
 };
 
 const updateUserValid = (req, res, next) => {
-  const errorMessage = validationUpdateUser(req);
+  const errorMessage = validationUpdateUser(req.body);
   if (errorMessage) {
-    res.error = errorMessage;
-    res.error.status = 404;
+    res.err = Error(errorMessage);
+    res.err.status = 404;
   }
   // TODO: Implement validatior for user entity during update
   next();
