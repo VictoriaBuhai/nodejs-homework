@@ -2,6 +2,7 @@ import { FIGHTER } from "../models/fighter.js";
 import { FighterService } from "../services/fighterService.js";
 
 const validationOnCreate = (body) => {
+  if (body.hasOwnProperty("id")) return "Request body can't include id field";
   if (!body.hasOwnProperty("name") & (body?.name === "")) {
     return "Name field is required and can't be empty";
   }

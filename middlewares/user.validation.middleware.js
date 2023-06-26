@@ -18,6 +18,7 @@ const passwordValidation = (password) => {
 
 const validationCreateUser = (body) => {
   const fields = ["firstName", "lastName", "email", "phoneNumber", "password"];
+  if (body.hasOwnProperty("id")) return "Request body can't include id field";
   if (
     Object.keys(body).length < 5 ||
     !Object.keys(body).every((key) => fields.includes(key))
