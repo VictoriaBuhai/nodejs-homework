@@ -1,5 +1,5 @@
 import { USER } from "../models/user.js";
-import { userService } from "../services/userService";
+import { userService } from "../services/userService.js";
 
 const emailValidation = (email) => {
   const validation = /^\w+([\.-]?\w+)*@gmail.com/;

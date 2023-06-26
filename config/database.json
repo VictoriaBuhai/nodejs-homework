@@ -1,5 +1,15 @@
 {
-  "users": [],
+  "users": [
+    {
+      "firstName": "Tartaglia",
+      "lastName": "Childe",
+      "email": "moremora@gmail.com",
+      "phoneNumber": "+380675436287",
+      "password": "qwerrty123",
+      "id": "ab4377f8-7070-4584-b156-4c98ceb7fb14",
+      "createdAt": "2023-06-26T14:49:29.221Z"
+    }
+  ],
   "fighters": [
     {
       "name": "Jon",
