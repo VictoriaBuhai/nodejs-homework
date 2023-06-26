@@ -46,10 +46,8 @@ const validationOnUpdate = (fighterBody) => {
 const createFighterValid = (req, res, next) => {
   const errorMessage = validationOnCreate(req.body);
   if (errorMessage) {
-    //console.log(errorMessage);
     res.err = Error(errorMessage);
     res.err.status = 400;
-    //console.log("res.err here: ", res.err);
   }
 
   next();

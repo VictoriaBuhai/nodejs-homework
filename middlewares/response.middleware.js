@@ -1,6 +1,5 @@
 const responseMiddleware = (req, res, next) => {
   if (res.err) {
-    console.log("res.err", res.err);
     const errorStatus = res.err.status;
     res.send({ message: res.err.toString(), status: errorStatus });
   } else {
